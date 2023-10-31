@@ -5,6 +5,8 @@ const express = require('express')
 // CONFIGURATION
 const app = express()
 
+app.use('/places', require('./controllers/places'))
+
 //ROUTES
 app.get('/', (req, res) => {
     res.send('Hello World')
