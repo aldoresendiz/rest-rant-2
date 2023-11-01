@@ -16,3 +16,11 @@ REST-Rant is an app where users can review restaurants.
 | DELETE | `/places/:id` | Delete a place |
 | POST | `/places/:id/rant` | Add rant to a place |
 | DELETE | `/places/:id/rant/:rantId` | Delete a rant |
+
+Data we will be storing for places (restaurants):
+- name (string)
+- city (string)
+- state (string)
+- cuisines (string)
+- pic (string)
+- 
