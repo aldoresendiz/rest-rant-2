@@ -29,7 +29,8 @@ router.get('/:id/edit', (req, res) => {
         res.render('error404')
     }
     else {
-        res.render('places/edit', { place: places[id] })
+        // console.log(places[id])
+        res.render('places/edit', { place: places[id], id })
     }
 })
 
@@ -55,7 +56,7 @@ router.get('/', (req, res) => {
 
 // POST
 router.post('/', (req, res) => {
-    console.log(req.body)
+    // console.log(req.body)
     if (!req.body.pic) {
         // Default image if one is not provided
         req.body.pic = 'http://placekitten.com/400/400'
@@ -83,6 +84,33 @@ router.delete('/:id', (req, res) => {
         places.splice(id, 1)
         res.redirect('/places')
         //res.send('STUB DELETE places/:id')
+    }
+})
+
+router.put('/:id', (req, res) => {
+    // console.log('This is it=>', req.params.id)
+    let id = Number(req.params.id)
+    // console.log(id)
+    if (isNaN(id)) {
+        res.render('error404')
+    }
+    else if (!places[id]) {
+        res.render('error404')
+    }
+    else {
+         // I need to dig into req.body and make sure the data is valid
+        if (!req.body.pic) {
+            // Default image since one was not provided
+            req.body.pic = 'http://placekitten.com/400/400'
+        }
+        if (!req.body.city) {
+            req.body.city = 'Anytown'
+        }
+        if (!req.body.state) {
+            req.body.state = 'USA'
+        }
+        places[id] = req.body
+        res.redirect(`/places/${id}`)
     }
 })
 
