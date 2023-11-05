@@ -1,6 +1,14 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\controllers",
+    "\\models",
+    "\\public",
+    "\\public\\css",
+    "\\public\\images",
+    "\\views",
+    "\\views\\places"
   ],
+  "SelectedNode": "\\controllers\\places.js",
   "PreviewInSolutionExplorer": false
 }

@@ -1,7 +1,81 @@
 const router = require('express').Router()
+const db = require('../models')
+
+// INDEX
+router.get('/', (req, res) => {
+    db.Place.find()
+        .then((places) => {
+            res.render('places/index', {places})
+        })
+        .catch(err => {
+            console.log(err)
+            res.render('error404')
+        })
+    // res.send('GET /places stub')
+})
+
+//NEW
+router.post('/', (req, res) => {
+    db.Place.create(req.body)
+        .then((places) => {
+            res.redirect('/places')
+        })
+        .catch(err => {
+            console.log('err', err)
+            res.render('error404')
+        })
+
+    // res.send('POST /places stub')
+})
+
+router.get('/new', (req, res) => {
+    res.render('places/new')
+})
+
+// SHOW
+router.get('/:id', (req, res) => {
+    db.Place.findById(req.params.id)
+        .then(place => {
+            res.render('places/show', {place})
+        })
+        .catch(err => {
+            console.log('err', err)
+            res.render('error404')
+        })
+    // res.send('GET /places/:id stub')
+})
+
+router.put('/:id', (req, res) => {
+    res.send('PUT /places/:id stub')
+})
+
+router.delete('/:id', (req, res) => {
+    res.send('DELETE /places/:id stub')
+})
+
+router.get('/:id/edit', (req, res) => {
+    res.send('GET edit from stub')
+})
+
+router.post('/:id/rant', (req, res) => {
+    res.send('GET /places/:id/rant stub')
+})
+
+router.delete('/:id/rant/:rantId', (req, res) => {
+    res.send('GET /places/:id/rant/:rantId stub')
+})
+
+
+
+
+module.exports = router
+
+// In be-7-rest-rant-part 8 we are asked to delete everything and go back to basic STUBS so that's what we are doing here
+// NEW
+/*
+
 const places = require('../models/places.js')
 
-// NEW
 router.get('/new', (req, res) => {
     res.render('places/new')
 })
@@ -110,9 +184,10 @@ router.put('/:id', (req, res) => {
             req.body.state = 'USA'
         }
         places[id] = req.body
-        res.redirect(`/places/${id}`)
+        res.redirect(`/places`)
+        //res.redirect(`/places/${id}`)
     }
 })
 
-
 module.exports = router
+*/
