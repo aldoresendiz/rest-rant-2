@@ -6,9 +6,10 @@
     "\\public",
     "\\public\\css",
     "\\public\\images",
+    "\\seeders",
     "\\views",
     "\\views\\places"
   ],
-  "SelectedNode": "\\public\\images\\coffee-cat.jpg",
+  "SelectedNode": "\\views\\places\\new.jsx",
   "PreviewInSolutionExplorer": false
 }
