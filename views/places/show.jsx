@@ -12,7 +12,7 @@ function show(data) {
         comments = data.place.comments.map(c => {
             return (
                 <div className="border">
-                    <h2 className="rant">{c.rant ? 'Rant! ??' : 'Rave! ??'}</h2>
+                    <h2 className="rant">{c.rant ? 'Rant! 😡' : 'Rave! 😻'}</h2>
                     <h4>{c.content}</h4>
                     <h3>
                         <strong>- {c.author}</strong>
@@ -71,6 +71,39 @@ function show(data) {
                 <hr></hr>
                 <h2>Comments</h2>
                 {comments}
+
+                <div className="row">
+                    <div className="col-sm-6">
+                        <h1>Got your Own Rant or Rave?</h1>
+                    </div>
+
+                    <form method="POST" action="/comments">
+                    <div className="form-group">
+                        <label htmlFor="author">Author</label>
+                        <input className="form-control" id="author" name="author" required></input>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="content">Content</label>
+                        <input className="form-control" type="textarea" id="content" name="content"></input>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="star">Star Rating</label>
+                        <input 
+                            type="number"
+                            step="0.5"
+                            className="form-control" 
+                            id="star" 
+                            name="star"></input>
+                    </div>
+                    <div>
+                        <label htmlFor="rant">Rant</label>
+                        <input className="form-control" type="checkbox" id="rant" name="rant" value="rant"></input>
+                    </div>
+                    <input className="btn btn-primary" type="submit" value="Add Comment"></input>
+                </form>
+
+
+                </div>
             </main>
         </Def>
     )
